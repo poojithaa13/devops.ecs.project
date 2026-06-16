@@ -1,11 +1,86 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>About</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — DevOps ECS Project</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>About This Project</h1>
-    <p>CI/CD pipeline using Docker, GitHub Actions, AWS ECR and ECS Fargate</p>
-    <a href="/">Back to Home</a>
+
+  <nav class="nav">
+    <div class="wrap">
+      <a href="/" class="brand"><span class="dot"></span>devops · ecs</a>
+      <div class="navlinks">
+        <a href="/">Home</a>
+        <a href="/health">Health Check</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="wrap">
+      <span class="eyebrow">$ cat pipeline.yml</span>
+      <h1>About this project.</h1>
+      <p class="lede">A CI/CD pipeline built with Docker, GitHub Actions, Amazon ECR and ECS Fargate — every push to main ends up running as a live container, automatically.</p>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="wrap">
+      <p class="section-label">The five stages</p>
+      <ol class="timeline" style="padding-left:0;">
+        <li class="stage done">
+          <span class="badge">01</span>
+          <div class="stage-body">
+            <h3>Push</h3>
+            <p>Code lands on <code>main</code> in GitHub and triggers the workflow.</p>
+          </div>
+        </li>
+        <li class="stage done">
+          <span class="badge">02</span>
+          <div class="stage-body">
+            <h3>Build &amp; test</h3>
+            <p>GitHub Actions installs dependencies, runs checks, and prepares the build.</p>
+          </div>
+        </li>
+        <li class="stage done">
+          <span class="badge">03</span>
+          <div class="stage-body">
+            <h3>Containerize</h3>
+            <p>Docker builds an image of the app from a multi-stage Dockerfile.</p>
+          </div>
+        </li>
+        <li class="stage done">
+          <span class="badge">04</span>
+          <div class="stage-body">
+            <h3>Publish</h3>
+            <p>The image is tagged and pushed to a private Amazon ECR repository.</p>
+          </div>
+        </li>
+        <li class="stage done">
+          <span class="badge">05</span>
+          <div class="stage-body">
+            <h3>Deploy</h3>
+            <p>ECS rolls out a new Fargate task from the updated image — no servers to provision or patch.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <a class="btn btn-ghost" href="/">← Back to home</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <span class="status"><span class="dot"></span>200 OK</span>
+      <span>region: us-east-1</span>
+    </div>
+  </footer>
+
 </body>
 </html>
