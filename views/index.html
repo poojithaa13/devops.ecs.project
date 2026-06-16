@@ -1,12 +1,88 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>DevOps ECS Project</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DevOps ECS Project</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Welcome to my DevOps Project.</h1>
-    <p>Node.js app running on AWS ECS Fargate</p>
-    <a href="/about">About</a> |
-    <a href="/health">Health Check</a>
+
+  <nav class="nav">
+    <div class="wrap">
+      <a href="/" class="brand"><span class="dot"></span>devops · ecs</a>
+      <div class="navlinks">
+        <a href="/about">About</a>
+        <a href="/health">Health Check</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="wrap">
+      <span class="eyebrow">● deployed — task running on Fargate</span>
+      <h1>Welcome to my<br>DevOps project.</h1>
+      <p class="lede">A Node.js app shipped through a full CI/CD pipeline and served from AWS ECS Fargate — no servers to patch, just containers that show up.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="/about">View the pipeline →</a>
+        <a class="btn btn-ghost" href="/health">Run health check</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="wrap">
+      <p class="section-label">How a commit becomes a running task</p>
+      <div class="chain">
+        <div class="node">
+          <span class="node-tag">Source</span>
+          <span class="node-name">GitHub</span>
+        </div>
+        <div class="arrow">→</div>
+        <div class="node">
+          <span class="node-tag">CI</span>
+          <span class="node-name">GitHub Actions</span>
+        </div>
+        <div class="arrow">→</div>
+        <div class="node">
+          <span class="node-tag">Build</span>
+          <span class="node-name">Docker image</span>
+        </div>
+        <div class="arrow">→</div>
+        <div class="node">
+          <span class="node-tag">Registry</span>
+          <span class="node-name">Amazon ECR</span>
+        </div>
+        <div class="arrow">→</div>
+        <div class="node">
+          <span class="node-tag">Runtime</span>
+          <span class="node-name">ECS Fargate</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <p class="section-label">task-definition.yml</p>
+      <div class="panel">
+        <p class="row"><span class="c"># what's actually running</span></p>
+        <p class="row"><span class="k">runtime:</span>     <span class="v">Node.js</span></p>
+        <p class="row"><span class="k">container:</span>   <span class="v">Docker, multi-stage build</span></p>
+        <p class="row"><span class="k">ci_cd:</span>        <span class="v">GitHub Actions</span></p>
+        <p class="row"><span class="k">registry:</span>     <span class="v">Amazon ECR</span></p>
+        <p class="row"><span class="k">compute:</span>      <span class="v">AWS ECS Fargate</span></p>
+        <p class="row"><span class="k">scaling:</span>      <span class="v">serverless — no EC2 to manage</span></p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <span class="status"><span class="dot"></span>200 OK</span>
+      <span>region: us-east-1</span>
+    </div>
+  </footer>
+
 </body>
 </html>
