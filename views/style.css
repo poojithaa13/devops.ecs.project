@@ -13,25 +13,35 @@
   --container: 920px;
 }
 
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
 
-html { -webkit-font-smoothing: antialiased; }
+html {
+  -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
+}
 
 body {
   margin: 0;
+  overflow-x: hidden;
   background: var(--bg);
   background-image:
     radial-gradient(900px 500px at 85% -10%, rgba(255, 153, 0, 0.08), transparent 60%),
     radial-gradient(700px 400px at -10% 30%, rgba(62, 207, 142, 0.05), transparent 60%);
   color: var(--text);
-  font-family: 'Inter', -apple-system, sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   line-height: 1.6;
   min-height: 100vh;
 }
 
-a { color: inherit; }
+a {
+  color: inherit;
+}
 
-::selection { background: rgba(255, 153, 0, 0.25); }
+::selection {
+  background: rgba(255, 153, 0, 0.25);
+}
 
 :focus-visible {
   outline: 2px solid var(--accent-live);
@@ -45,18 +55,18 @@ a { color: inherit; }
   padding: 0 28px;
 }
 
-/* ---------- Nav ---------- */
+/* ================= NAV ================= */
 
 .nav {
   border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(8px);
 }
 
 .nav .wrap {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-top: 22px;
-  padding-bottom: 22px;
+  padding: 22px 28px;
 }
 
 .brand {
@@ -81,13 +91,23 @@ a { color: inherit; }
 }
 
 @keyframes pulse {
-  0%   { box-shadow: 0 0 0 0 rgba(62, 207, 142, 0.45); }
-  70%  { box-shadow: 0 0 0 7px rgba(62, 207, 142, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(62, 207, 142, 0); }
+  0% {
+    box-shadow: 0 0 0 0 rgba(62, 207, 142, 0.45);
+  }
+
+  70% {
+    box-shadow: 0 0 0 7px rgba(62, 207, 142, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(62, 207, 142, 0);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .dot { animation: none; }
+  .dot {
+    animation: none;
+  }
 }
 
 .navlinks {
@@ -100,15 +120,17 @@ a { color: inherit; }
 .navlinks a {
   text-decoration: none;
   color: var(--text-muted);
-  transition: color 0.15s ease;
+  transition: color 0.2s ease;
 }
 
-.navlinks a:hover { color: var(--text); }
+.navlinks a:hover {
+  color: var(--accent-live);
+}
 
-/* ---------- Hero ---------- */
+/* ================= HERO ================= */
 
 .hero {
-  padding: 88px 0 56px;
+  padding: 80px 0 56px;
 }
 
 .eyebrow {
@@ -120,7 +142,7 @@ a { color: inherit; }
   color: var(--accent-live);
   background: rgba(62, 207, 142, 0.08);
   border: 1px solid rgba(62, 207, 142, 0.25);
-  border-radius: 100px;
+  border-radius: 999px;
   padding: 6px 14px;
   margin-bottom: 28px;
 }
@@ -150,6 +172,7 @@ h1 {
 .btn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
   font-family: 'IBM Plex Mono', monospace;
   font-size: 0.88rem;
@@ -157,7 +180,7 @@ h1 {
   text-decoration: none;
   padding: 12px 20px;
   border-radius: var(--radius);
-  transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+  transition: all 0.2s ease;
 }
 
 .btn-primary {
@@ -165,18 +188,26 @@ h1 {
   color: #1a1102;
 }
 
-.btn-primary:hover { transform: translateY(-1px); }
+.btn-primary:hover {
+  transform: translateY(-2px);
+}
 
 .btn-ghost {
   border: 1px solid var(--border);
   color: var(--text);
 }
 
-.btn-ghost:hover { border-color: var(--accent-live); transform: translateY(-1px); }
+.btn-ghost:hover {
+  border-color: var(--accent-live);
+  transform: translateY(-2px);
+}
 
-/* ---------- Pipeline chain (index) ---------- */
+/* ================= SECTIONS ================= */
 
-.section { padding: 56px 0; border-top: 1px solid var(--border); }
+.section {
+  padding: 56px 0;
+  border-top: 1px solid var(--border);
+}
 
 .section-label {
   font-family: 'IBM Plex Mono', monospace;
@@ -187,10 +218,11 @@ h1 {
   margin: 0 0 24px;
 }
 
+/* ================= PIPELINE ================= */
+
 .chain {
   display: flex;
   align-items: stretch;
-  gap: 0;
   flex-wrap: wrap;
 }
 
@@ -201,6 +233,12 @@ h1 {
   padding: 16px 18px;
   flex: 1 1 150px;
   min-width: 140px;
+  transition: all 0.2s ease;
+}
+
+.node:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent-aws);
 }
 
 .node-tag {
@@ -223,18 +261,12 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 0 10px;
   color: var(--text-muted);
   font-family: 'IBM Plex Mono', monospace;
-  padding: 0 10px;
-  flex: 0 0 auto;
 }
 
-@media (max-width: 720px) {
-  .chain { flex-direction: column; }
-  .arrow { transform: rotate(90deg); padding: 4px 0; }
-}
-
-/* ---------- Stack panel (code block) ---------- */
+/* ================= CODE PANEL ================= */
 
 .panel {
   background: var(--surface-2);
@@ -244,22 +276,53 @@ h1 {
   font-family: 'IBM Plex Mono', monospace;
   font-size: 0.88rem;
   overflow-x: auto;
+  max-width: 100%;
 }
 
-.panel .row { margin: 0 0 8px; white-space: pre; }
-.panel .row:last-child { margin-bottom: 0; }
-.k { color: var(--accent-aws); }
-.v { color: var(--text); }
-.c { color: var(--text-muted); }
+.panel .row {
+  margin: 0 0 8px;
+  white-space: pre-wrap;
+}
 
-/* ---------- Timeline (about) ---------- */
+.panel .row:last-child {
+  margin-bottom: 0;
+}
 
-.timeline { position: relative; margin: 0; padding: 0; list-style: none; }
+.k {
+  color: var(--accent-aws);
+}
+
+.v {
+  color: var(--text);
+}
+
+.c {
+  color: var(--text-muted);
+}
+
+/* ================= CODE INLINE ================= */
+
+code {
+  font-family: 'IBM Plex Mono', monospace;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 2px 6px;
+  border-radius: 4px;
+  color: var(--accent-live);
+}
+
+/* ================= TIMELINE ================= */
+
+.timeline {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
 
 .timeline::before {
   content: '';
   position: absolute;
-  left: 17px;
+  left: 18px;
   top: 6px;
   bottom: 6px;
   width: 1px;
@@ -273,7 +336,9 @@ h1 {
   padding-bottom: 34px;
 }
 
-.stage:last-child { padding-bottom: 0; }
+.stage:last-child {
+  padding-bottom: 0;
+}
 
 .badge {
   flex: none;
@@ -311,7 +376,7 @@ h1 {
   max-width: 52ch;
 }
 
-/* ---------- Footer ---------- */
+/* ================= FOOTER ================= */
 
 footer {
   border-top: 1px solid var(--border);
@@ -333,4 +398,61 @@ footer .status {
   display: inline-flex;
   align-items: center;
   gap: 8px;
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 720px) {
+  .chain {
+    flex-direction: column;
+  }
+
+  .arrow {
+    transform: rotate(90deg);
+    padding: 6px 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .nav .wrap {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .navlinks {
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .hero {
+    padding: 60px 0 40px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  .lede {
+    font-size: 1rem;
+  }
+
+  footer .wrap {
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+@media (max-width: 500px) {
+  .cta-row {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  .wrap {
+    padding: 0 20px;
+  }
 }
